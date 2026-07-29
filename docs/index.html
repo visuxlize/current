@@ -696,7 +696,7 @@ function computeInsights(state) {
   //  SDK setup and configuration, "Config"). Leave blank to keep
   //  data on this device only. See HOSTING.md for the full setup.
   // ============================================================
-const firebaseConfig = {
+  const CONFIG = { firebase: {
   apiKey: "AIzaSyDQUH-BPPaD7T0tBMNpIYcRo1TMEHEnlzU",
   authDomain: "current-3e3ab.firebaseapp.com",
   projectId: "current-3e3ab",
@@ -704,7 +704,7 @@ const firebaseConfig = {
   messagingSenderId: "1092982524180",
   appId: "1:1092982524180:web:e9b6f345fde4a6d40b9a01",
   measurementId: "G-R1FMF6Q9MP"
-};
+  } };
 
   const EMPTY_STATE = { income: [], expenses: [], debts: [], transactions: [], profile: { creditScore: null, savingsGoal: 20, efMonths: 3, savings: 0, breathingPct: 10 }, snapshots: {} };
   function normalizeState(s) {
