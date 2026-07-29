@@ -696,15 +696,17 @@ function computeInsights(state) {
   //  SDK setup and configuration, "Config"). Leave blank to keep
   //  data on this device only. See HOSTING.md for the full setup.
   // ============================================================
-  const CONFIG = { firebase: {
-  apiKey: "AIzaSyDQUH-BPPaD7T0tBMNpIYcRo1TMEHEnlzU",
-  authDomain: "current-3e3ab.firebaseapp.com",
-  projectId: "current-3e3ab",
-  storageBucket: "current-3e3ab.firebasestorage.app",
-  messagingSenderId: "1092982524180",
-  appId: "1:1092982524180:web:e9b6f345fde4a6d40b9a01",
-  measurementId: "G-R1FMF6Q9MP"
-  } };
+  const CONFIG = {
+    firebase: {
+      apiKey: "AIzaSyDQUH-BPPaD7T0tBMNpIYcRo1TMEHEnlzU",
+      authDomain: "current-3e3ab.firebaseapp.com",
+      projectId: "current-3e3ab",
+      storageBucket: "current-3e3ab.firebasestorage.app",
+      messagingSenderId: "1092982524180",
+      appId: "1:1092982524180:web:e9b6f345fde4a6d40b9a01",
+      measurementId: "G-R1FMF6Q9MP",
+    },
+  };
 
   const EMPTY_STATE = { income: [], expenses: [], debts: [], transactions: [], profile: { creditScore: null, savingsGoal: 20, efMonths: 3, savings: 0, breathingPct: 10 }, snapshots: {} };
   function normalizeState(s) {
@@ -745,7 +747,7 @@ function computeInsights(state) {
 
   async function initCloud() {
     if (!cloudConfigured()) { setSync("On this device", "local"); showAuth(false); return; }
-    if (typeof firebase === "undefined") { setSync("On this device", "local"); showAuth(false); return; }
+    if (typeof firebase === "undefined") { setSync("Sync SDK blocked", "local"); showAuth(false); return; }
     try { fbApp = firebase.initializeApp(CONFIG.firebase); } catch (e) { fbApp = firebase.app(); }
     auth = firebase.auth(); db = firebase.firestore();
 
